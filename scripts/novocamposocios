@@ -1,0 +1,3 @@
+set term ^;
+
+alter table socios add qutde integer ^

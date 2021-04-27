@@ -1,0 +1,87 @@
+CREATE OR ALTER PROCEDURE SP_MENSALIDADE (
+    data_inicio date,
+    diapgto integer,
+    parcela integer,
+    carencia integer,
+    valor_mensal double precision,
+    id_socio integer,
+    codigo integer,
+    id_banco integer,
+    tit_banco integer)
+as
+declare variable h integer;
+declare variable i integer;
+declare variable f integer;
+declare variable t integer;
+declare variable g varchar(10);
+declare variable ano_a integer;
+declare variable mes_a integer;
+declare variable dia_a integer;
+declare variable mes_b integer;
+declare variable mes_c integer;
+declare variable dia_b integer;
+declare variable data_b date;
+declare variable data_a date;
+declare variable num_parc integer;
+declare variable meses_car integer;
+begin
+    ANO_A = extract(year from DATA_INICIO);
+    MES_A = extract(month from DATA_INICIO);
+    DIA_A = extract(DAY from DATA_INICIO);
+    MESES_CAR = CARENCIA / 30;
+    DIA_B = CAST(DIAPGTO as INTEGER);
+    DATA_B = DATA_INICIO;
+    NUM_PARC = PARCELA;
+    i = 0;
+    MES_B = MES_A + 1;
+   /* ------------------------------------------------------------------------- */
+   /* aumentar o mês p obter a parcela inicial                                  */
+   /* ------------------------------------------------------------------------- */
+    MES_C = MES_A + MESES_CAR;
+    IF (MES_C > 12) THEN
+    begin
+      MES_C = 1;
+      ANO_A = ANO_A + 1;
+    end
+    DATA_A = CAST((CAST(MES_C AS VARCHAR(2)) || '/' || CAST(DIA_A AS VARCHAR(2)) || '/' || CAST(ANO_A AS VARCHAR(4))) as DATE) ;
+    DATA_B = CAST((CAST(MES_C AS VARCHAR(2)) || '/' || CAST(DIA_B AS VARCHAR(2)) || '/' || CAST(ANO_A AS VARCHAR(4))) as DATE) ;
+
+    if (DATA_A > DATA_B) then
+      MES_C = MES_C + 1;
+
+    IF (MES_C > 12) THEN
+    begin
+      MES_C = 1;
+      ANO_A = ANO_A + 1;
+    end
+      DATA_B = CAST((CAST(MES_C AS VARCHAR(2)) || '/' || CAST(DIA_B AS VARCHAR(2)) || '/' || CAST(ANO_A AS VARCHAR(4))) as DATE) ;
+    /* ------------------------------------------------------------------------- */
+    /*Insere as parcelas                                                         */
+    /* ------------------------------------------------------------------------- */
+    h = 0;
+    while (I < NUM_PARC) do
+    begin
+     if (H = 0) then
+         H = 1;
+     F = (:codigo + :I);
+    -- T = (:tit_banco + :I);
+     G = 'M';
+     INSERT INTO recebimentos (ID, VALOR_NF, VALOR_RECEBER, VALOR_A_REC, PARCELA, MESANO,
+       VENCIMENTO, STATUS, VALOR_PAGO, VALOR_DIF, JUROS, DESCONTO, MULTA, EMISSAO,
+       TITULO, CODIGO, SERIE,  VALOR_1VIA, ID_SOCIO, ID_BANCO, SITUACAO, TIPO_DOC)
+     VALUES
+       (:id_socio, :valor_mensal, :valor_mensal, :valor_mensal, :h,
+
+       udf_month(udf_IncMonth(:DATA_B, (:i))) || udf_year(udf_IncMonth(:DATA_B, (:i))),
+
+       udf_IncMonth(:DATA_B,:i), 'Pendente', '0', '0', '0', '0', '0', current_date ,
+       :F,GEN_ID(GEN_CODIGO_BANCO,1),:G, '0', :id_socio, :id_banco, 'Ativo', 'MS');
+     H = H + 1;
+     I = I + 1;
+    end
+
+   -- UPDATE RDB$GENERATORS set RDB$GENERATOR_ID = :T where RDB$GENERATOR_NAME = 'GEN_CODIGO_BANCO' ;
+
+   suspend;
+
+end

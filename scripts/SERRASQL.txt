@@ -1,0 +1,51 @@
+CREATE TABLE TABRETORNO (
+  ID                     CHAR( 2 )
+, CAMPO1                 CHAR( 61 )
+, TITULO                 CHAR( 6 )
+, CAMPO2                 CHAR( 2 )
+, CAMPO3                 CHAR( 39 )
+, DATA                   CHAR( 6 )
+, CAMPO5                 CHAR( 36 )
+, CAMPO9                 CHAR( 13 )
+, CAMPO7                 CHAR( 201 )
+, VALOR                  CHAR( 11 )
+, CENTAVOS               CHAR( 2 )
+, CAMPO8                 CHAR( 22 )
+, NEWLINE                CHAR( 1 )
+)
+
+select 
+      case extract(day from current_date)
+        when 31 then 'doze'
+        when 30 then 'doze'
+        when 29 then 'doze'
+        when 28 then 'doze'
+        when 27 then 'doze'
+        when 26 then 'doze'
+        when 25 then 'doze'
+        when 24 then 'doze'
+        when 23 then 'onde'
+        when 22 then 'dez'
+        when 21 then 'nove'
+        when 20 then 'oito'
+        when 19 then 'sete'
+        when 18 then 'seis'
+        when 17 then 'cinco'
+        when 16 then 'dezeseis'
+        when 15 then 'quinze'
+        when 14 then 'quatorze'
+        when 13 then 'treze'      
+        when 12 then 'doze'
+        when 11 then 'onde'
+        when 10 then 'dez'
+        when 09 then 'nove'
+        when 08 then 'oito'
+        when 07 then 'sete'
+        when 06 then 'seis'
+        when 05 then 'cinco'
+        when 04 then 'quatro'
+        when 03 then 'tres'
+        when 02 then 'dois'
+        when 01 then 'um'
+      end 
+ from rdb$database

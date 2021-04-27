@@ -1,0 +1,468 @@
+object TRpReport
+  GridWidth = 58
+  GridHeight = 58
+  PageOrientation = rpOrientationPortrait
+  Pagesize = rpPageSizeUser
+  PagesizeQt = 3
+  PageHeight = 9722
+  PageWidth = 5903
+  CustomPageHeight = 5669
+  PageBackColor = 16777215
+  PreviewStyle = spNormal
+  PreviewWindow = spwMaximized
+  LeftMargin = 227
+  TopMargin = 57
+  BottomMargin = 0
+  PrinterSelect = pRpTicketPrinter
+  SubReports = <
+    item
+      SubReport = TRpSubReport0
+    end>
+  DataInfo = <
+    item
+      Alias = 'BOLETOS'
+      DatabaseAlias = 'OBITOS'
+      SQL = 'SELECT * from SP_IMP_BOL (:LOTE,:GP,:INSC,:INSC1,:COB)'
+    end>
+  DatabaseInfo = <
+    item
+      Alias = 'OBITOS'
+      LoadParams = True
+      LoadDriverParams = True
+      LoginPrompt = False
+      ReportTable = 'REPMAN_REPORTS'
+      ReportSearchField = 'REPORT_NAME'
+      ReportField = 'REPORT'
+      ReportGroupsTable = 'REPMAN_GROUPS'
+      ADOConnectionString = ''
+    end>
+  Params = <
+    item
+      Name = 'LOTE'
+      AllowNulls = False
+      Value = 7
+      ParamType = rpParamInteger
+      Datasets.Strings = (
+        'BOLETOS')
+      Description = ''
+      Hint = ''
+      Search = ''
+      ErrorMessage = ''
+      Validation = ''
+    end
+    item
+      Name = 'GP'
+      AllowNulls = False
+      Value = 'A'
+      Datasets.Strings = (
+        'BOLETOS')
+      Description = ''
+      Hint = ''
+      Search = ''
+      ErrorMessage = ''
+      Validation = ''
+    end
+    item
+      Name = 'INSC'
+      AllowNulls = False
+      Value = 26
+      ParamType = rpParamInteger
+      Datasets.Strings = (
+        'BOLETOS')
+      Description = ''
+      Hint = ''
+      Search = ''
+      ErrorMessage = ''
+      Validation = ''
+    end
+    item
+      Name = 'INSC1'
+      AllowNulls = False
+      Value = 45
+      ParamType = rpParamInteger
+      Datasets.Strings = (
+        'BOLETOS')
+      Description = ''
+      Hint = ''
+      Search = ''
+      ErrorMessage = ''
+      Validation = ''
+    end
+    item
+      Name = 'COB'
+      AllowNulls = False
+      Value = '3'
+      Datasets.Strings = (
+        'BOLETOS')
+      Description = ''
+      Hint = ''
+      Search = ''
+      ErrorMessage = ''
+      Validation = ''
+    end>
+  Language = 4
+  PrinterFonts = rppfontsnever
+  StreamFormat = rpStreamText
+  ReportAction = []
+  Type1Font = poHelvetica
+  WFontName = 'Arial'
+  LFontName = 'Helvetica'
+  object TRpSubReport0: TRpSubReport
+    Sections = <
+      item
+        Section = TRpSection0
+      end>
+    Alias = 'BOLETOS'
+  end
+  object TRpSection0: TRpSection
+    Width = 9645
+    Height = 4785
+    SubReport = TRpSubReport0
+    ChangeBool = False
+    PageRepeat = False
+    SkipPage = False
+    AlignBottom = False
+    SectionType = rpsecdetail
+    Components = <
+      item
+        Component = TRpExpression0
+      end
+      item
+        Component = TRpExpression1
+      end
+      item
+        Component = TRpExpression3
+      end
+      item
+        Component = TRpExpression4
+      end
+      item
+        Component = TRpExpression6
+      end
+      item
+        Component = TRpExpression9
+      end
+      item
+        Component = TRpLabel1
+      end
+      item
+        Component = TRpLabel3
+      end
+      item
+        Component = TRpExpression10
+      end
+      item
+        Component = TRpExpression5
+      end
+      item
+        Component = TRpLabel5
+      end
+      item
+        Component = TRpLabel0
+      end
+      item
+        Component = TRpLabel2
+      end
+      item
+        Component = TRpLabel4
+      end>
+    ExternalTable = 'REPMAN_REPORTS'
+    ExternalField = 'REPORT'
+    ExternalSearchField = 'REPORT_NAME'
+    StreamFormat = rpStreamText
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    ChangeExpression = ''
+    BeginPageExpression = ''
+    ChangeExpression = ''
+    SkipExpreV = ''
+    SkipExpreH = ''
+    SkipToPageExpre = ''
+    BackExpression = ''
+    Stream = {0000000000000000}
+  end
+  object TRpExpression0: TRpExpression
+    Width = 3900
+    Height = 225
+    PosX = 695
+    PosY = 3624
+    Type1Font = poHelvetica
+    AutoExpand = False
+    AutoContract = False
+    ExportPosition = 0
+    ExportSize = 1
+    ExportDoNewLine = False
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    Expression = 'BOLETOS.NOME'
+    DisplayFormat = ''
+    ExportDisplayFormat = ''
+    AgIniValue = '0'
+    ExportExpression = ''
+  end
+  object TRpExpression1: TRpExpression
+    Width = 6900
+    Height = 180
+    PosX = 120
+    PosY = 3823
+    Type1Font = poHelvetica
+    WordWrap = True
+    AutoExpand = False
+    AutoContract = False
+    ExportPosition = 0
+    ExportSize = 1
+    ExportDoNewLine = False
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    Expression = 
+      'BOLETOS.RUA + '#39' - '#39' + BOLETOS.BAIRRO + BOLETOS.CEP  + '#39' - '#39' + BO' +
+      'LETOS.UF + '#13#10#39' - '#39' + BOLETOS.MUNICIPIO'
+    DisplayFormat = ''
+    ExportDisplayFormat = ''
+    AgIniValue = '0'
+    ExportExpression = ''
+  end
+  object TRpExpression4: TRpExpression
+    Width = 975
+    Height = 180
+    PosX = 8520
+    PosY = 345
+    Type1Font = poHelvetica
+    FontSize = 8
+    Alignment = 2
+    AutoExpand = False
+    AutoContract = False
+    ExportPosition = 0
+    ExportSize = 1
+    ExportDoNewLine = False
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    Expression = 'FORMATSTR('#39'DD/MM/YY'#39',BOLETOS.VENCIMENTO)'
+    DisplayFormat = ''
+    ExportDisplayFormat = ''
+    AgIniValue = '0'
+    ExportExpression = ''
+  end
+  object TRpExpression3: TRpExpression
+    Width = 1035
+    Height = 225
+    PosX = 8415
+    PosY = 1571
+    Type1Font = poHelvetica
+    FontSize = 8
+    Alignment = 2
+    DisplayFormat = ',##0.00'
+    AutoExpand = False
+    AutoContract = False
+    ExportPosition = 0
+    ExportSize = 1
+    ExportDoNewLine = False
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    Expression = 'BOLETOS.VALOR'
+    DisplayFormat = ',##0.00'
+    ExportDisplayFormat = ''
+    AgIniValue = '0'
+    ExportExpression = ''
+  end
+  object TRpExpression6: TRpExpression
+    Width = 1035
+    Height = 240
+    PosX = 0
+    PosY = 1269
+    Type1Font = poHelvetica
+    FontSize = 8
+    Alignment = 1
+    AutoExpand = False
+    AutoContract = False
+    ExportPosition = 0
+    ExportSize = 1
+    ExportDoNewLine = False
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    Expression = 'FORMATSTR('#39'DD/MM/YY'#39',BOLETOS.EMISSAO)'
+    DisplayFormat = ''
+    ExportDisplayFormat = ''
+    AgIniValue = '0'
+    ExportExpression = ''
+  end
+  object TRpExpression9: TRpExpression
+    Width = 915
+    Height = 240
+    PosX = 1215
+    PosY = 1269
+    Type1Font = poHelvetica
+    FontSize = 8
+    Alignment = 1
+    AutoExpand = False
+    AutoContract = False
+    ExportPosition = 0
+    ExportSize = 1
+    ExportDoNewLine = False
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    Expression = 'BOLETOS.N_GRUPO + '#39'-'#39' + str(BOLETOS.INSCRICAO)'
+    DisplayFormat = ''
+    ExportDisplayFormat = ''
+    AgIniValue = '0'
+    ExportExpression = ''
+  end
+  object TRpExpression10: TRpExpression
+    Width = 5280
+    Height = 240
+    PosX = 225
+    PosY = 2049
+    Type1Font = poHelvetica
+    CutText = True
+    WordWrap = True
+    AutoExpand = False
+    AutoContract = False
+    ExportPosition = 0
+    ExportSize = 1
+    ExportDoNewLine = False
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    Expression = 
+      'IIF(BOLETOS.TOT_PENDENTE<>0, '#39'Contem '#39' + STR(BOLETOS.TOT_PENDENT' +
+      'E) + '#39' Taxa(s) em atraso'#39', null)'
+    DisplayFormat = ''
+    ExportDisplayFormat = ''
+    AgIniValue = '0'
+    ExportExpression = ''
+  end
+  object TRpExpression5: TRpExpression
+    Width = 345
+    Height = 225
+    PosX = 7590
+    PosY = 3624
+    Type1Font = poHelvetica
+    AutoExpand = False
+    AutoContract = False
+    ExportPosition = 0
+    ExportSize = 1
+    ExportDoNewLine = False
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    Expression = 'BOLETOS.COD_COBRADOR'
+    DisplayFormat = ''
+    ExportDisplayFormat = ''
+    AgIniValue = '0'
+    ExportExpression = ''
+  end
+  object TRpLabel5: TRpLabel
+    Width = 465
+    Height = 225
+    PosX = 7125
+    PosY = 3624
+    Type1Font = poHelvetica
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    WideText = #10'Cob.'
+  end
+  object TRpLabel1: TRpLabel
+    Width = 5280
+    Height = 225
+    PosX = 0
+    PosY = 2261
+    Type1Font = poHelvetica
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    WideText = 'JUROS DE MORA 0,33 % AO DIA. O ATRAZO DE '#10
+  end
+  object TRpLabel0: TRpLabel
+    Width = 5280
+    Height = 225
+    PosX = 0
+    PosY = 345
+    Type1Font = poHelvetica
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Arial'
+    LFontName = 'Helvetica'
+    WideText = 
+      'JUROS DE MORA 0,33 % AO DIA. O ATRAZO DE '#10#10'JUROS DE MORA 0,33 % ' +
+      'AO DIA. O ATRAZO DE '#10'JUROS DE MORA 0,33 % AO DIA. O ATRAZO DE '#10'J' +
+      'UROS DE MORA 0,33 % AO DIA. O ATRAZO DE '#10
+  end
+  object TRpLabel2: TRpLabel
+    Width = 5280
+    Height = 225
+    PosX = 0
+    PosY = 2501
+    Type1Font = poHelvetica
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    WideText = 'JUROS DE MORA 0,33 % AO DIA. O ATRAZO DE '#10
+  end
+  object TRpLabel3: TRpLabel
+    Width = 5280
+    Height = 225
+    PosX = 0
+    PosY = 2726
+    Type1Font = poHelvetica
+    WordWrap = True
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    WideText = 
+      'N'#195'O RECEBER APOS  20  DIAS,  SOMENTE  NO '#10#10'N'#195'O RECEBER APOS  20 ' +
+      ' DIAS,  SOMENTE  NO '#10'N'#195'O RECEBER APOS  20  DIAS,  SOMENTE  NO '#10'N' +
+      #195'O RECEBER APOS  20  DIAS,  SOMENTE  NO '#10'NAO RECEBER APOS  20  D' +
+      'IAS,  SOMENTE  NO '
+  end
+  object TRpLabel4: TRpLabel
+    Width = 5280
+    Height = 225
+    PosX = 0
+    PosY = 2906
+    Type1Font = poHelvetica
+    WordWrap = True
+    PrintCondition = ''
+    DoBeforePrint = ''
+    DoAfterPrint = ''
+    WFontName = 'Roman 10cpi'
+    LFontName = 'Helvetica'
+    WideText = 
+      'N'#195'O RECEBER APOS  20  DIAS,  SOMENTE  NO '#10#10'N'#195'O RECEBER APOS  20 ' +
+      ' DIAS,  SOMENTE  NO '#10'N'#195'O RECEBER APOS  20  DIAS,  SOMENTE  NO '#10'N' +
+      #195'O RECEBER APOS  20  DIAS,  SOMENTE  NO '#10'NAO RECEBER APOS  20  D' +
+      'IAS,  SOMENTE  NO '
+  end
+end
